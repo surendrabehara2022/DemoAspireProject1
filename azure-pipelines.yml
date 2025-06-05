@@ -40,7 +40,7 @@ steps:
       azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
       
       # Initialize the project (skipped if already initialized)
-      azd init --environment $AZURE_ENV_NAME --infra terraform --location $AZURE_LOCATION --no-prompt
+      azd init --environment $AZURE_ENV_NAME --location $AZURE_LOCATION --no-prompt
 
       # Provision infrastructure with Terraform
       azd provision
