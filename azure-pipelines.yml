@@ -44,7 +44,7 @@ steps:
       ls -la
       
       # Initialize the project (skipped if already initialized)
-      azd init --template . --environment $AZURE_ENV_NAME --location $AZURE_LOCATION --no-prompt
+      azd init --environment $AZURE_ENV_NAME --location $AZURE_LOCATION --no-prompt
 
       # Provision infrastructure with Terraform
       azd provision
