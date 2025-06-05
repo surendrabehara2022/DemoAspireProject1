@@ -34,7 +34,8 @@ steps:
       
       # Log in to Azure using the service connection (already handled)
       azd version
-      
+      azd config set auth.useAzCliAuth "true"
+    
       # Set environment
       azd env set AZURE_LOCATION $AZURE_LOCATION
       azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
