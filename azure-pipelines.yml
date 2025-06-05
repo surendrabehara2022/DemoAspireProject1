@@ -40,8 +40,8 @@ steps:
       azd env set AZURE_LOCATION $AZURE_LOCATION
       azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
 
-     pwd
-     ls -la
+      pwd
+      ls -la
       
       # Initialize the project (skipped if already initialized)
       azd init --template . --environment $AZURE_ENV_NAME --location $AZURE_LOCATION --no-prompt
