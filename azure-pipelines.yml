@@ -9,11 +9,38 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  AZURE_ENV_NAME: dev
+  AZURE_LOCATION: eastus
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: '9.x'
+    displayName: Set up .NET 9
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '81e63c6d-7f3c-4e33-8a28-0036da979a43'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Install Azure Dev CLI (azd)
+      curl -fsSL https://aka.ms/install-azd.sh | bash
+      
+      # Log in to Azure using the service connection (already handled)
+      azd version
+      
+      # Set environment
+      azd env set AZURE_LOCATION $AZURE_LOCATION
+      azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
+      
+      # Initialize the project (skipped if already initialized)
+      azd init --environment $AZURE_ENV_NAME --infra terraform --location $AZURE_LOCATION --no-prompt
+
+      # Provision infrastructure with Terraform
+      azd provision
