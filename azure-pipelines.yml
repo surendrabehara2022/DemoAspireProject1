@@ -52,7 +52,7 @@ steps:
       azd deploy --environment $(AZURE_ENVIRONMENT)
 
     env:
-       AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
-       AZURE_LOCATION: $(AZURE_LOCATION)
+      AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+      AZURE_LOCATION: $(AZURE_LOCATION)
 
   displayName: 'Run azd init, provision and deploy with environment'
