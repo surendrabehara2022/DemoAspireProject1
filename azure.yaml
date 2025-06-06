@@ -6,3 +6,6 @@ services:
     language: dotnet
     project: ./DemoAspireProject.AppHost/DemoAspireProject.AppHost.csproj
     host: containerapp
+
+infra:
+  provider: terraform

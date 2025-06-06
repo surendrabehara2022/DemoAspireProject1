@@ -46,6 +46,7 @@ steps:
       # Initialize azd project with environment
       azd init --environment $(AZURE_ENVIRONMENT)
 
+      azd infra gen --environment $(AZURE_ENVIRONMENT)
       # Provision resources with environment
       azd provision --environment $(AZURE_ENVIRONMENT)
 
