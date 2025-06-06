@@ -10,8 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  AZURE_ENV_NAME: dev
-  AZURE_LOCATION: eastus
+  AZURE_LOCATION: 'eastus'
+  AZURE_ENVIRONMENT: 'dev'  # your environment name here
 
 steps:
 - task: UseDotNet@2
@@ -36,15 +36,18 @@ steps:
       azd version
       azd config set auth.useAzCliAuth "true"
     
-      # Set environment
-      azd env set AZURE_LOCATION $AZURE_LOCATION
-      azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
-
       pwd
       ls -la
       
-      # Initialize the project (skipped if already initialized)
-      azd init --environment $AZURE_ENV_NAME --location $AZURE_LOCATION --no-prompt
+      echo "Using environment: $(AZURE_ENVIRONMENT)"
 
-      # Provision infrastructure with Terraform
-      azd provision
+      # Initialize azd project with environment
+      azd init --environment $(AZURE_ENVIRONMENT) --subscription $(AZURE_SUBSCRIPTION_ID) --location $(AZURE_LOCATION) --quiet
+
+      # Provision resources with environment
+      azd provision --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION) --quiet
+
+      # Deploy the application with environment
+      azd deploy --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION) --quiet
+
+  displayName: 'Run azd init, provision and deploy with environment'
