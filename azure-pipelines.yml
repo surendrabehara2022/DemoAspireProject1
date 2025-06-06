@@ -30,7 +30,6 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az account show
       # Install Azure Dev CLI (azd)
       curl -fsSL https://aka.ms/install-azd.sh | bash
       
