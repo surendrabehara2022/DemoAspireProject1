@@ -4,5 +4,5 @@ name: DemoAspireProject
 services:  
   app:
     language: dotnet
-    project: ./DemoAspireProject.AppHost.csproj
+    project: ./DemoAspireProject.AppHost/DemoAspireProject.AppHost.csproj
     host: containerapp
