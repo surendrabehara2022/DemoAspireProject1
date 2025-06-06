@@ -12,7 +12,7 @@ pool:
 variables:
   AZURE_LOCATION: 'eastus'
   AZURE_ENVIRONMENT: 'dev'  # your environment name here
-  AZURE_SUBSCRIPTION_ID: '81e63c6d-7f3c-4e33-8a28-0036da979a43'
+#  AZURE_SUBSCRIPTION_ID: '81e63c6d-7f3c-4e33-8a28-0036da979a43'
 
 steps:
 - task: UseDotNet@2
