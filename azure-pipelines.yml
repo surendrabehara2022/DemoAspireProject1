@@ -42,12 +42,12 @@ steps:
       echo "Using environment: $(AZURE_ENVIRONMENT)"
 
       # Initialize azd project with environment
-      azd init --environment $(AZURE_ENVIRONMENT) --subscription $(AZURE_SUBSCRIPTION_ID) --location $(AZURE_LOCATION) --quiet
+      azd init --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION)
 
       # Provision resources with environment
-      azd provision --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION) --quiet
+      azd provision --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION) 
 
       # Deploy the application with environment
-      azd deploy --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION) --quiet
+      azd deploy --environment $(AZURE_ENVIRONMENT) --location $(AZURE_LOCATION)
 
   displayName: 'Run azd init, provision and deploy with environment'
